@@ -1,0 +1,36 @@
+const
+  a= 100;
+var
+  arr: array[1..a] of Integer;
+  n, i, j, m, d: Integer;
+  begin
+  write('Введите размер массива: ');
+  readln(n);
+  writeln('Введите элементы массива:');
+  for i := 1 to n do
+  begin
+    write('arr[', i, '] = ');
+    readln(arr[i]);
+  end;
+  m:= abs(arr[1] - arr[2]);
+  for i := 1 to n-1 do
+  begin
+    for j := i+1 to n do
+    begin
+      d:= abs(arr[i] - arr[j]);
+      if d< m then
+        m:=d;
+    end;
+  end;
+  writeln('Минимальная разница элементов: ',m);
+  writeln('Пары элементов с минимальной разницей по модулю: ');
+  for i := 1 to n-1 do
+  begin
+    for j := i+1 to n do
+    begin
+      if abs(arr[i] - arr[j]) = m then
+        writeln('(', arr[i], ', ', arr[j], ')');
+    end;
+  end;
+  readln;
+end.
